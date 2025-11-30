@@ -15,15 +15,14 @@ Automated system for detecting persons, heads, and hard hats in construction sit
 ---
 
 ## Workflow of the Code
-1. Unzip dataset and models from `Final_token_pruning.zip`
-2. Load SAM checkpoint and fine-tuned ResNet-50
-3. Configure automatic mask generator with `points_per_side=24`, `pred_iou_thresh=0.88`
-4. For each image:  
+1. Load SAM checkpoint and fine-tuned ResNet-50 and datasets
+2. Configure automatic mask generator with `points_per_side=24`, `pred_iou_thresh=0.88`
+3. For each image:  
    `generate masks → prune → refine → classify crops → filter by confidence (0.85)`
-5. Map classes to COCO categories (`person/head/helmet`)
-6. Run detection on sample images with visualization (bounding boxes + labels)
-7. Benchmark: Compare SAM/total time, avg masks/dets, mAP on 399 images
-8. Output: Performance table showing **~1.1× speedup**, minimal mAP drop
+4. Map classes to COCO categories (`person/head/helmet`)
+5. Run detection on sample images with visualization (bounding boxes + labels)
+6. Benchmark: Compare SAM/total time, avg masks/dets, mAP on 399 images
+7. Output: Performance table showing **~1.1× speedup**, minimal mAP drop
 
 ---
 
